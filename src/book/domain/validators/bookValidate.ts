@@ -1,15 +1,15 @@
 import { validate } from "class-validator";
-import { AuthCredential } from "../entities/authCredential";
+import { Book } from "../entities/book";
 
-export class AuthValidate {
+export class BookValidate {
 
     // atributes
-    public credentials:AuthCredential;
+    public book:Book;
     public listErrors:any[];
 
     //constructor
-    constructor(credentials:AuthCredential) {
-        this.credentials = credentials;
+    constructor(book:Book) {
+        this.book = book;
         this.listErrors = [];
     }
 
@@ -29,7 +29,7 @@ export class AuthValidate {
 
     //protected methods
     protected async validate() {
-        this.listErrors = await validate(this.credentials);
+        this.listErrors = await validate(this.book);
     }
 
     protected errors():any[] {

@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import { Signale } from "signale";
+import { authRouter } from "./auth/infraestructure/routes/authRouter";
+import { bookRouter } from "./book/infraestructure/routes/bookRouter";
 
 const app = express();
 const signale = new Signale();
@@ -15,6 +17,9 @@ async function server() {
     try {
 
         //routes instances
+
+        app.use('/api/v1/auth',authRouter);
+        app.use('/api/v1/book',bookRouter);
 
         app.listen(PORT, () => {
             signale.success(`Server run in port ${PORT}`);

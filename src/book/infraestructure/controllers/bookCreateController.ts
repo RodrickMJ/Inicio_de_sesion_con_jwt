@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { AuthUseCase } from "../../application/use-cases/authUseCase";
+import { CreateBookUseCase } from "../../application/use-cases/authUseCase";
 
-export class AuthController {
+export class BookCreateController {
 
-    constructor(readonly authUseCase:AuthUseCase){}
+    constructor(readonly createBookUseCase:CreateBookUseCase){}
 
     async run(request:Request,response:Response) {
         
         try {
             let {email,password} = request.body;
 
-            let authentication = await this.authUseCase.execute(email,password);
+            let authentication = await this.createBookUseCase.execute(email,password);
 
             return response.status(200)
                 .json(authentication);
