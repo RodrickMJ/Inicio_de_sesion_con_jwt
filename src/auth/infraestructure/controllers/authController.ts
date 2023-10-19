@@ -16,6 +16,7 @@ export class AuthController {
                 .json(authentication);
 
         }catch(error:any) {
+            console.log(error);
             response.status(error.http_status ?? 500)
                 .json({
                     message:"error while authenticating",
