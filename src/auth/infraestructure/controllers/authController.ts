@@ -8,6 +8,11 @@ export class AuthController {
     async run(request:Request,response:Response) {
         
         try {
+
+            const ip = request.connection.localAddress;
+
+            console.log(ip);
+
             let {email,password} = request.body;
 
             let authentication = await this.authUseCase.execute(email,password);
